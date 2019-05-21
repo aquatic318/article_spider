@@ -186,6 +186,10 @@ export class WechatParser {
             body = dbArticle.__meta__.html;
             console.info(`成功获取缓存文章信息:${JSON.stringify({ id: info.id, title: info.title })}`);
         } else {
+            if (!info.title || !info.url) {
+                    console.error(`无法获取文章信息Title:${JSON.stringify({ id: info.id, title: info.title})}`);
+                    return null;
+                }
             const res = await crawlerService.search({
                 uri: info.url,
                 headers: wechat.headers,
