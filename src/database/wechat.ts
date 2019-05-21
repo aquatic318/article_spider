@@ -62,7 +62,8 @@ class WechatDB {
 
     public async writeHtml(id: string, html: string) {
         const articleDir = path.join(this.dir, id);
-        const htmlFile = path.join(articleDir, 'index.html');
+        //const htmlFile = path.join(articleDir, 'index.html');
+        const htmlFile = path.join(articleDir, `${title}.html`);
         await fs.mkdirp(articleDir);
         await fs.writeFile(htmlFile, html);
         return true;
